@@ -1,7 +1,9 @@
 package br.com.brunoti.filmesflix.presenter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import br.com.brunoti.filmesflix.R
 import coil.load
@@ -21,6 +23,7 @@ class MoviesAdapter(private val moviesList: List<Movie>): RecyclerView.Adapter<M
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         holder.itemView.apply {
+            setOnClickListener(View.OnClickListener { Toast.makeText(context, moviesList[position].descricao, Toast.LENGTH_SHORT).show() }  )
             binding.movieTitle.text = moviesList[position].titulo
             binding.movieImage.load(moviesList[position].imagem) {
                 placeholder(R.drawable.ic_image)
